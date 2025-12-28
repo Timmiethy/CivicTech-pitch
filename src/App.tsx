@@ -489,11 +489,31 @@ const TheSolution = ({ isDark, lang }: AppProps) => {
           <p className={`leading-relaxed mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}> 
             {t.card2_desc}
           </p>
-          <div className={`h-40 w-full rounded-xl overflow-hidden border relative ${ 
+          <div className={`h-40 w-full rounded-xl overflow-hidden border relative group-hover:scale-[1.02] transition-transform duration-500 ${ 
             isDark ? 'bg-slate-800 border-white/5' : 'bg-slate-50 border-slate-200 shadow-inner'
           }`}> 
-             <div className={`absolute inset-0 ${isDark ? 'opacity-30' : 'opacity-50'}`} style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
-             <div className={`absolute top-1/2 left-1/2 rounded-full ${isDark ? 'w-2 h-2 bg-emerald-400 shadow-[0_0_10px_#34d399]' : 'w-3 h-3 bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.2)]'}`}></div>
+             {/* Map Background Pattern */}
+             <div className={`absolute inset-0 opacity-40 ${isDark ? 'bg-[radial-gradient(#334155_1px,transparent_1px)]' : 'bg-[radial-gradient(#cbd5e1_1px,transparent_1px)]'} [background-size:16px_16px]`} />
+             
+             {/* Simulated Map Paths */}
+             <svg className="absolute inset-0 w-full h-full opacity-20" stroke={isDark ? '#4ade80' : '#10b981'} strokeWidth="2" fill="none">
+                <path d="M 50 150 Q 100 100 150 150 T 250 150" />
+                <path d="M 0 50 L 50 50 L 100 100 L 300 100" />
+                <path d="M 200 0 L 200 200" />
+             </svg>
+
+             {/* Radar Scan Effect */}
+             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent w-[50%] h-full animate-[scan_3s_linear_infinite]" />
+
+             {/* Map Pins */}
+             <div className={`absolute top-1/2 left-1/2 rounded-full w-3 h-3 bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.2)] animate-pulse`} />
+             <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-red-500 animate-ping" />
+             <div className="absolute bottom-1/3 right-1/3 w-2 h-2 rounded-full bg-blue-500" />
+             
+             {/* Tooltip Simulation */}
+             <div className={`absolute top-[40%] left-[55%] px-2 py-1 rounded text-[10px] font-mono border ${isDark ? 'bg-slate-900 border-emerald-500/30 text-emerald-400' : 'bg-white border-slate-200 text-slate-600 shadow-sm'}`}>
+                LIVE: 24 reports
+             </div>
           </div>
         </div>
       </div>
