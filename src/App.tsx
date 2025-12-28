@@ -197,47 +197,48 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Language Toggle */}
-          <button 
-            onClick={toggleLang}
-            className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-colors border ${ 
-              isDark 
-                ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' 
-                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            <Languages size={14} />
-            {lang.toUpperCase()}
-          </button>
+          {/* Desktop Controls */}
+          <div className="hidden md:flex items-center gap-3">
+            <button 
+              onClick={toggleLang}
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-colors border ${ 
+                isDark 
+                  ? 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' 
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+              }`}
+            >
+              <Languages size={14} />
+              {lang.toUpperCase()}
+            </button>
 
-          {/* Theme Toggle */}
-          <button 
-            onClick={toggleTheme}
-            className={`p-2 rounded-full transition-colors ${ 
-              isDark 
-                ? 'bg-white/10 text-yellow-300 hover:bg-white/20' 
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-            aria-label="Toggle Theme"
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+            <button 
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-colors ${ 
+                isDark 
+                  ? 'bg-white/10 text-yellow-300 hover:bg-white/20' 
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+              aria-label="Toggle Theme"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
 
           <a 
             href="https://civictech-hsh8.onrender.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-colors ${ 
+            className={`px-4 py-2 rounded-full text-sm font-bold transition-all shadow-md active:scale-95 ${ 
             isDark 
-              ? 'bg-white text-slate-900 hover:bg-blue-50' 
-              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20'
+              ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-blue-500/20' 
+              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200'
           }`}> 
             {t.demo}
           </a>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 rounded-lg transition-colors active:bg-slate-100 dark:active:bg-slate-800"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
@@ -248,13 +249,45 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className={`md:hidden absolute top-16 left-0 right-0 border-b p-4 flex flex-col gap-4 shadow-xl ${
+        <div className={`md:hidden absolute top-16 left-0 right-0 border-b p-6 flex flex-col gap-6 shadow-xl animate-in slide-in-from-top-2 ${
           isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'
         }`}>
-          <a href="#problem" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.problem}</a>
-          <a href="#solution" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.solution}</a>
-          <a href="#technology" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.tech}</a>
-          <a href="#impact" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.impact}</a>
+          <div className="flex flex-col gap-4">
+            <a href="#problem" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.problem}</a>
+            <a href="#solution" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.solution}</a>
+            <a href="#technology" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.tech}</a>
+            <a href="#impact" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.impact}</a>
+          </div>
+          
+          <hr className={isDark ? 'border-white/10' : 'border-slate-200'} />
+          
+          <div className="flex items-center justify-between">
+            <span className={`text-sm font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Settings</span>
+            <div className="flex gap-3">
+              <button 
+                onClick={toggleLang}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold border ${ 
+                  isDark 
+                    ? 'bg-white/5 border-white/10 text-white' 
+                    : 'bg-slate-50 border-slate-200 text-slate-700'
+                }`}
+              >
+                <Languages size={16} />
+                {lang.toUpperCase()}
+              </button>
+
+              <button 
+                onClick={toggleTheme}
+                className={`p-2 rounded-full border ${ 
+                  isDark 
+                    ? 'bg-white/5 border-white/10 text-yellow-300' 
+                    : 'bg-slate-50 border-slate-200 text-slate-600'
+                }`}
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </nav>
