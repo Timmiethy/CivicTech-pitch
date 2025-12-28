@@ -11,7 +11,9 @@ import {
     Lock,
     Activity,  Sun,
   Moon,
-  Languages
+  Languages,
+  Menu,
+  X
 } from 'lucide-react';
 import indianCityScene from './assets/indian-city-scene-optimized.jpg';
 
@@ -167,7 +169,11 @@ const content = {
 
 const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
   const t = content[lang].nav;
-  
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Close menu when clicking a link
+  const handleLinkClick = () => setIsOpen(false);
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${ 
       isDark 
@@ -182,6 +188,7 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
           </span>
         </div>
         
+        {/* Desktop Menu */}
         <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
           <a href="#problem" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-blue-600'}`}>{t.problem}</a>
           <a href="#solution" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-blue-600'}`}>{t.solution}</a>
@@ -227,8 +234,42 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
           }`}> 
             {t.demo}
           </a>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={24} className={isDark ? 'text-white' : 'text-slate-800'} /> : <Menu size={24} className={isDark ? 'text-white' : 'text-slate-800'} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className={`md:hidden absolute top-16 left-0 right-0 border-b p-4 flex flex-col gap-4 shadow-xl ${
+          isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'
+        }`}>
+          <a href="#problem" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.problem}</a>
+          <a href="#solution" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.solution}</a>
+          <a href="#technology" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.tech}</a>
+          <a href="#impact" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.impact}</a>
+          <hr className={isDark ? 'border-white/10' : 'border-slate-200'} />
+          <a 
+            href="https://civictech-hsh8.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleLinkClick}
+            className={`text-center px-5 py-3 rounded-xl text-base font-bold transition-colors ${ 
+            isDark 
+              ? 'bg-white text-slate-900' 
+              : 'bg-blue-600 text-white'
+          }`}> 
+            {t.demo}
+          </a>
+        </div>
+      )}
     </nav>
   );
 };
@@ -348,7 +389,7 @@ const TheProblem = ({ isDark, lang }: AppProps) => {
           </div>
 
           {/* Visualizing "Urban Decay" */}
-          <div className={`relative h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl group border ${isDark ? 'bg-slate-800 border-white/5' : 'bg-slate-100 border-slate-200 shadow-slate-200/50'}`}>
+          <div className={`relative h-[300px] md:h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl group border ${isDark ? 'bg-slate-800 border-white/5' : 'bg-slate-100 border-slate-200 shadow-slate-200/50'}`}>
             <img 
               src={indianCityScene} 
               alt="Urban Scene" 
