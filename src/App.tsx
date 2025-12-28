@@ -227,7 +227,7 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
             href="https://civictech-hsh8.onrender.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`hidden sm:block px-5 py-2 rounded-full text-sm font-bold transition-colors ${ 
+            className={`px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-xs sm:text-sm font-bold transition-colors ${ 
             isDark 
               ? 'bg-white text-slate-900 hover:bg-blue-50' 
               : 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20'
@@ -255,19 +255,6 @@ const Navbar = ({ isDark, lang, toggleTheme, toggleLang }: AppProps) => {
           <a href="#solution" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.solution}</a>
           <a href="#technology" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.tech}</a>
           <a href="#impact" onClick={handleLinkClick} className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.impact}</a>
-          <hr className={isDark ? 'border-white/10' : 'border-slate-200'} />
-          <a 
-            href="https://civictech-hsh8.onrender.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleLinkClick}
-            className={`text-center px-5 py-3 rounded-xl text-base font-bold transition-colors ${ 
-            isDark 
-              ? 'bg-white text-slate-900' 
-              : 'bg-blue-600 text-white'
-          }`}> 
-            {t.demo}
-          </a>
         </div>
       )}
     </nav>
