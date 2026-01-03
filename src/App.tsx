@@ -35,7 +35,7 @@ const content = {
       solution: "Giải pháp",
       tech: "Công nghệ",
       impact: "Tác động",
-      demo: "Live Demo"
+      demo: "Báo cáo ngay"
     },
     hero: {
       tag: "Dự án Thành Phố Thông Minh 2025",
@@ -102,7 +102,7 @@ const content = {
       solution: "Solution",
       tech: "Tech",
       impact: "Impact",
-      demo: "Live Demo"
+      demo: "Report Now"
     },
     hero: {
       tag: "Smart City Project 2025",
