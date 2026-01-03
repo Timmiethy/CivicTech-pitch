@@ -13,7 +13,9 @@ import {
   Moon,
   Languages,
   Menu,
-  X
+  X,
+  Mail,
+  Phone
 } from 'lucide-react';
 import indianCityScene from './assets/indian-city-scene-optimized.jpg';
 
@@ -94,6 +96,11 @@ const content = {
       quote: "\"Công nghệ không chỉ là công cụ. Nó là ngôn ngữ mới của sự tin tưởng giữa chính quyền và người dân.\"",
       team: "Đội Ngũ CivicTech",
       role: "Nhóm Sáng Lập"
+    },
+    footer: {
+      title: "CivicTech Presentation",
+      contact: "Liên hệ",
+      copyright: "© 2025 Dự án CivicTech. Được xây dựng cho Thử thách Thành phố Thông minh."
     }
   },
   en: {
@@ -161,6 +168,11 @@ const content = {
       quote: "\"Technology is not just a tool. It is the new language of trust between people and government.\"",
       team: "CivicTech Team",
       role: "Founding Team"
+    },
+    footer: {
+      title: "CivicTech Presentation",
+      contact: "Contact",
+      copyright: "© 2025 CivicTech Project. Built for the Smart City Challenge."
     }
   }
 };
@@ -645,7 +657,9 @@ const TrustAndImpact = ({ isDark, lang }: AppProps) => {
             {t.quote}
           </p>
           <div className="flex items-center justify-center gap-3">
-            <div className={`w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-emerald-500 ${!isDark && 'shadow-md'}`} />
+            <div className={`w-10 h-10 rounded-full bg-white p-1 ${!isDark && 'shadow-md'}`}>
+              <img src="/icon.svg" alt="CivicTech Logo" className="w-full h-full object-contain" />
+            </div>
             <div className="text-left">
               <div className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.team}</div>
               <div className={`text-xs uppercase tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-500 font-semibold'}`}>{t.role}</div>
@@ -657,19 +671,44 @@ const TrustAndImpact = ({ isDark, lang }: AppProps) => {
   );
 };
 
-const Footer = ({ isDark }: AppProps) => (
-  <footer className={`py-12 border-t transition-colors duration-500 ${isDark ? 'bg-slate-900 border-white/10' : 'bg-slate-900 border-white/10 text-white'}`}> 
-    <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div className="flex items-center gap-2">
-        <img src="/icon.svg" alt="CivicTech Logo" className="w-6 h-6 opacity-70" />
-        <span className={`text-lg font-bold ${isDark ? 'text-slate-500' : 'text-slate-300'}`}>CivicTech Presentation</span>
+const Footer = ({ isDark, lang }: AppProps) => {
+  const t = content[lang].footer;
+  return (
+    <footer className={`py-12 border-t transition-colors duration-500 ${isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'}`}> 
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+        <div className="space-y-6">
+          <div className="flex items-center gap-2">
+            <img src="/icon.svg" alt="CivicTech Logo" className="w-8 h-8" />
+            <span className={`text-xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-800'}`}>
+              Civic<span className={isDark ? 'text-blue-500' : 'text-blue-600'}>Tech</span>
+            </span>
+          </div>
+          <p className={`max-w-sm text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+            {t.copyright}
+          </p>
+        </div>
+
+        <div className="space-y-6 md:justify-self-end">
+          <h4 className={`text-sm font-bold uppercase tracking-wider ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.contact}</h4>
+          <div className="space-y-4">
+            <a href="mailto:civictech.hcmut@gmail.com" className={`flex items-center gap-3 group transition-colors ${isDark ? 'text-slate-400 hover:text-blue-400' : 'text-slate-600 hover:text-blue-600'}`}>
+              <div className={`p-2 rounded-lg transition-colors ${isDark ? 'bg-white/5 group-hover:bg-blue-500/10' : 'bg-slate-100 group-hover:bg-blue-50'}`}>
+                <Mail size={18} />
+              </div>
+              <span className="text-sm font-medium">civictech.hcmut@gmail.com</span>
+            </a>
+            <a href="tel:0898801095" className={`flex items-center gap-3 group transition-colors ${isDark ? 'text-slate-400 hover:text-emerald-400' : 'text-slate-600 hover:text-emerald-600'}`}>
+              <div className={`p-2 rounded-lg transition-colors ${isDark ? 'bg-white/5 group-hover:bg-emerald-500/10' : 'bg-slate-100 group-hover:bg-emerald-50'}`}>
+                <Phone size={18} />
+              </div>
+              <span className="text-sm font-medium">0898801095</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <p className={`text-sm ${isDark ? 'text-slate-600' : 'text-slate-400'}`}> 
-        © 2025 CivicTech Project. Built for the Smart City Challenge.
-      </p>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default function IntroSite() {
   const [isDark, setIsDark] = useState(true);
