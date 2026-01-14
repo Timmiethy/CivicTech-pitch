@@ -43,7 +43,7 @@ const content = {
       tag: "Dự án Thành Phố Thông Minh 2025",
       title1: "Đánh thức tiềm năng",
       title2: "Đô Thị Số Hóa",
-      desc: "Một nền tảng toàn diện kết nối tiếng nói người dân với hành động của chính quyền. Minh bạch. Tức thời. Hiệu quả.",
+      desc: "Một nền tảng tiện lợi biến tiếng nói người dân thành hành động cụ thể. Minh bạch. Tức thời. Hiệu quả.",
       btn1: "Khám phá dự án"
     },
     problem: {
