@@ -93,7 +93,7 @@ const content = {
         { title: 'Cộng Đồng', desc: 'Trao quyền cho người dân trở thành "cảm biến" thông minh.' },
         { title: 'Hiệu Quả', desc: 'Giảm 70% thời gian từ lúc phát hiện đến khi được giải quyết.' }
       ],
-      quote: "\"Công nghệ không chỉ là công cụ. Nó là ngôn ngữ mới của sự tin tưởng giữa chính quyền và người dân.\"",
+      quote: "\"Công nghệ không chỉ là công cụ. Nó là ngôn ngữ mới của sự tin tưởng giữa các tổ chức và người dân.\"",
       team: "Đội Ngũ CivicTech",
       role: "Nhóm Sáng Lập"
     },
