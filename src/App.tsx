@@ -17,7 +17,7 @@ import {
   Mail,
   Phone
 } from 'lucide-react';
-import indianCityScene from './assets/indian-city-scene-optimized.jpg';
+import indianCityScene from './assets/IMG_5515.jpg';
 
 // --- Types ---
 type Lang = 'vi' | 'en';
@@ -52,9 +52,11 @@ const content = {
       title3: "và",
       title4: "Giải pháp",
       desc: "Hạ tầng xuống cấp, rác thải ùn ứ, và những mối nguy hiểm tiềm tàng. Người dân muốn báo cáo, nhưng quy trình hiện tại quá phức tạp, chậm chạp và thiếu phản hồi.",
-      stat1: "Thời gian tiếp nhận thông tin cũ",
-      stat2: "Vấn đề nhỏ bị bỏ qua",
-      tag1: "Hư hại hạ tầng",
+      stat1Title: "Thủ Công",
+      stat1: "Quy trình tiếp nhận và phân loại tốn nhiều nhân lực.",
+      stat2Title: "Rời Rạc",
+      stat2: "Dữ liệu không đồng bộ giữa các phòng ban xử lý.",
+      tag1: "Rác thải",
       tag2: "Ô nhiễm",
       quote: "\"Chúng tôi thấy vấn đề hàng ngày, nhưng không biết gửi đi đâu để được lắng nghe.\""
     },
@@ -124,8 +126,10 @@ const content = {
       title3: "and",
       title4: "Solutions",
       desc: "Damaged roads, trash piles, and hidden dangers. Citizens want to report them, but the current process is too hard, too slow, and has no feedback.",
-      stat1: "Average time to receive reports",
-      stat2: "Small issues ignored",
+      stat1Title: "Manual",
+      stat1: "Sorting and classification rely heavily on human effort.",
+      stat2Title: "Fragmented",
+      stat2: "Data is often not synchronized across departments.",
       tag1: "Damaged Roads",
       tag2: "Pollution",
       quote: "\"We see problems every day, but don't know where to send them to be heard.\""
@@ -410,11 +414,11 @@ const TheProblem = ({ isDark, lang }: AppProps) => {
             
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className={`p-4 rounded-xl border ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-100 hover:shadow-lg transition-shadow'}`}>
-                <h3 className={`text-3xl font-extrabold mb-1 ${isDark ? 'text-white' : 'text-blue-900'}`}>48h+</h3>
+                <h3 className={`text-2xl font-extrabold mb-1 ${isDark ? 'text-white' : 'text-blue-900'}`}>{t.stat1Title}</h3>
                 <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{t.stat1}</p>
               </div>
               <div className={`p-4 rounded-xl border ${isDark ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-100 hover:shadow-lg transition-shadow'}`}>
-                <h3 className={`text-3xl font-extrabold mb-1 ${isDark ? 'text-white' : 'text-blue-900'}`}>60%</h3>
+                <h3 className={`text-2xl font-extrabold mb-1 ${isDark ? 'text-white' : 'text-blue-900'}`}>{t.stat2Title}</h3>
                 <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{t.stat2}</p>
               </div>
             </div>
