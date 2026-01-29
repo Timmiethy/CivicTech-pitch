@@ -17,7 +17,7 @@ import {
   Mail,
   Phone
 } from 'lucide-react';
-import indianCityScene from './assets/img_5515.jpg';
+import indianCityScene from './assets/city-scene.jpg';
 
 // --- Types ---
 type Lang = 'vi' | 'en';
